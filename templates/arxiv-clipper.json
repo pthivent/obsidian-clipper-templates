@@ -23,12 +23,12 @@
 		},
 		{
 			"name": "published",
-			"value": "{{selector:.ltx_dates|replace:\\\"(\\\",\\\"\\\"|replace:\\\")\\\",\\\"\\\"|date:\\\"YYYY-MM-DD\\\"}}",
+			"value": "{{selector:.ltx_dates|replace:\\\"(\\\":\\\"\\\"|replace:\\\")\\\":\\\"\\\"|date:\\\"YYYY-MM-DD\\\"}}",
 			"type": "date"
 		},
 		{
 			"name": "year",
-			"value": "{{selector:.ltx_dates|replace:\\\"(\\\",\\\"\\\"|replace:\\\")\\\",\\\"\\\"|date:\\\"YYYY\\\"}}",
+			"value": "{{selector:.ltx_dates|replace:\\\"(\\\":\\\"\\\"|replace:\\\")\\\":\\\"\\\"|date:\\\"YYYY\\\"}}",
 			"type": "number"
 		},
 		{
