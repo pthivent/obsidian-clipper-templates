@@ -7,6 +7,11 @@
 	"noteContentFormat": "![{{schema:name}}]({{url}})",
 	"properties": [
 		{
+			"name": "categories",
+			"value": "[[Videos]]",
+			"type": "multitext"
+		},
+		{
 			"name": "title",
 			"value": "{{schema:name}}",
 			"type": "text"
