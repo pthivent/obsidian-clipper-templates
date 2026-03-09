@@ -1,10 +1,8 @@
 {
 	"schemaVersion": "0.1.0",
-	"name": "YouTube",
+	"name": "YouTube (kepano)",
 	"behavior": "create",
-	"noteNameFormat": "{{schema:author}} – {{schema:name}}",
-	"path": "Clippings",
-	"noteContentFormat": "![{{schema:name}}]({{url}})\n\n{% if selector:ytd-expandable-metadata-renderer[has-video-summary] %}\n{{selector:ytd-expandable-metadata-renderer[has-video-summary] #collapsed-title yt-formatted-string|first|callout:\"summary\",\"AI-generated video summary\", true}}\n{% endif %}\n[{{schema:name}}]({{url}}) - {{schema:author}} - {{schema:uploadDate|date:YYYY-MM-DD}} (video, {{schema:duration|replace:\"PT\":\"\",\"S\":\"\"|calc:\"/60\"|round}} min)\n",
+	"noteContentFormat": "{{\"a short summary of the key points\"}}\n\n---\n\n![{{schema:name}}]({{url}})\n\n## Transcript\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|markdown}}",
 	"properties": [
 		{
 			"name": "categories",
@@ -49,5 +47,8 @@
 	],
 	"triggers": [
 		"https://www.youtube.com/watch?v="
-	]
+	],
+	"noteNameFormat": "{{schema:author}} – {{schema:name}}",
+	"path": "Clippings",
+	"context": "{{description}}\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|markdown}}"
 }

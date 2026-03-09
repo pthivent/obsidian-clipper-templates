@@ -1,0 +1,54 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "YouTube (mine)",
+	"behavior": "create",
+	"noteContentFormat": "\n{{\"a summary of the page\"|callout:(\"summary\")}}\n\n---\n\n![{{schema:name}}]({{url}})\n\n[{{schema:name}}]({{url}}) - {{schema:author}} - {{schema:uploadDate|date:YYYY-MM-DD}} (video, {{schema:duration|duration}})\n\n## Transcript\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace_tags:\"h2\":\"h4\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|replace:\"/(\\d{1,2}\\W){1,2}\\d{2}\\s/gm\":\"\"|markdown|replace:\"/\\n\\n-\\s/gm\":\"\\n\\n\",\"/\\n-/gm\":\"\",\"/^-\\s/gm\":\"\"}}\n",
+	"properties": [
+		{
+			"name": "categories",
+			"value": "[[Videos]]",
+			"type": "multitext"
+		},
+		{
+			"name": "title",
+			"value": "{{schema:name}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{schema:author|wikilink}}",
+			"type": "multitext"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:uploadDate|date:YYYY-MM-DD}}",
+			"type": "date"
+		},
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "image",
+			"value": "{{schema:thumbnailUrl|slice:0}}",
+			"type": "text"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com/watch?v="
+	],
+	"noteNameFormat": "{{schema:author}} – {{schema:name}}",
+	"path": "Clippings",
+	"context": "{{description}}\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace_tags:\"h2\":\"h4\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|replace:\"/\\d{1,2}\\W\\d{2}/gm\":\"\"|markdown|replace:\"/\\n\\n-\\s/gm\":\"\\n\\n\",\"/\\n-/gm\":\"\",\"/^-\\s/gm\":\"\"}}\n"
+}

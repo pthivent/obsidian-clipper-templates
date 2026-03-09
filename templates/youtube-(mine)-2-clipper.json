@@ -1,0 +1,54 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "YouTube (mine) 2",
+	"behavior": "create",
+	"noteContentFormat": "\n{{\"1. Analyze the provided transcript for:\\n\\n- Main themes and key concepts\\n- Supporting evidence and examples\\n- Actionable takeaways\\n- Unique insights or perspectives\\n- Methodologies or frameworks presented\\n\\n2. Organize the information into these sections:\\n- ## Executive Summary 📝 (2-3 sentences overview)\\n- ## Key Takeaways 🎯 (3-5 main points)\\n- ## Core Concepts 💡(detailed breakdown of main ideas)\\n- ## Actionable Tips 🔨 (practical applications)\\n- ## Additional Insights 🔍 (unique perspectives or valuable details)\\n\\n3. Process the information by:\\n- Removing redundant content\\n- Consolidating related points\\n- Preserving technical terminology\\n- Maintaining the original context\\n- Highlighting controversial or debatable points\"|callout:(\"summary\")}}\n\n---\n\n![{{schema:name}}]({{url}})\n\n[{{schema:name}}]({{url}}) - {{schema:author}} - {{schema:uploadDate|date:YYYY-MM-DD}} (video, {{schema:duration|duration}})\n\n## Transcript\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace_tags:\"h2\":\"h4\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|replace:\"/(\\d{1,2}\\W){1,2}\\d{2}\\s/gm\":\"\"|markdown|replace:\"/\\n\\n-\\s/gm\":\"\\n\\n\",\"/\\n-/gm\":\"\",\"/^-\\s/gm\":\"\"}}\n",
+	"properties": [
+		{
+			"name": "categories",
+			"value": "[[Videos]]",
+			"type": "multitext"
+		},
+		{
+			"name": "title",
+			"value": "{{schema:name}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{schema:author|wikilink}}",
+			"type": "multitext"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:uploadDate|date:YYYY-MM-DD}}",
+			"type": "date"
+		},
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "image",
+			"value": "{{schema:thumbnailUrl|slice:0}}",
+			"type": "text"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "tags",
+			"value": "",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com/watch?v="
+	],
+	"noteNameFormat": "{{schema:author}} – {{schema:name}}",
+	"path": "Clippings",
+	"context": "{{description}}\n\n{{selectorHtml:ytd-engagement-panel-section-list-renderer[visibility$=\\\"EXPANDED\\\"] #segments-container|strip_tags:\"h2,ytd-transcript-segment-renderer\"|replace_tags:\"h2\":\"h4\"|replace:\"ytd-transcript-segment-renderer\":\"li\"|replace:\"/\\d{1,2}\\W\\d{2}/gm\":\"\"|markdown|replace:\"/\\n\\n-\\s/gm\":\"\\n\\n\",\"/\\n-/gm\":\"\",\"/^-\\s/gm\":\"\"}}\n"
+}

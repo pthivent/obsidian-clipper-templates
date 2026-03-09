@@ -1,0 +1,53 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Youtube Post",
+	"behavior": "create",
+	"noteContentFormat": "\n{{selector:div#post div#image-container img?src|replace:\"/=[^=]*$/\":\"=s0\"|image}}\n\n{{selector:div#post yt-formatted-string#content-text|split:\"--\"|first|split:\"\\n\"|slice:2,-1|join:\"\\n\"}}",
+	"properties": [
+		{
+			"name": "categories",
+			"value": "[[Clippings]]",
+			"type": "multitext"
+		},
+		{
+			"name": "title",
+			"value": "{{selector:div#post yt-formatted-string#content-text|split:\\\"\\n\\\"|first}}",
+			"type": "text"
+		},
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{author|split:\\\", \\\"|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "published",
+			"value": "{{published}}",
+			"type": "date"
+		},
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "description",
+			"value": "{{description}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "youtube, posts",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.youtube.com/post/"
+	],
+	"noteNameFormat": "{{selector:div#post yt-formatted-string#content-text|split:\"\\n\"|first}}",
+	"path": "Clippings"
+}
